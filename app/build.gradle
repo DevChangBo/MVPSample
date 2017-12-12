@@ -108,7 +108,7 @@ dependencies {
     compile rootProject.ext.dependencies["greendao"]
     compile rootProject.ext.dependencies["Utils"]
     compile rootProject.ext.dependencies["nineGridView"]
-    compile project(':mvp')
+//    compile project(':mvp')
     /*test*/
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -123,4 +123,5 @@ dependencies {
         exclude group: 'com.android.support'
     })
     compile 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'com.zwy:mvp:1.0.0'
 }
