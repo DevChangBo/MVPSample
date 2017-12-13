@@ -57,6 +57,7 @@ public class MainModel extends BaseModel implements MainContract.Model {
         mFragmentList.add(F_2Fragment.newInstance());
         mFragmentList.add(F_3Fragment.newInstance());
         mFragmentList.add(F_4Fragment.newInstance());
+
         return mFragmentList;
     }
 

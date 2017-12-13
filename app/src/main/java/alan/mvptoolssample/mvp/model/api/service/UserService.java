@@ -16,7 +16,13 @@
 package alan.mvptoolssample.mvp.model.api.service;
 
 
+import android.database.Observable;
+
+import alan.mvptoolssample.mvp.model.en.en.BaseJson;
+import alan.mvptoolssample.mvp.model.en.en.LoginBean;
 import retrofit2.Retrofit;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * ================================================
@@ -25,5 +31,6 @@ import retrofit2.Retrofit;
  * ================================================
  */
 public interface UserService {
-
+    @POST("sdljfskdhfsdlfsjkfdskl")
+    io.reactivex.Observable<BaseJson<LoginBean>> doLogin(@Query("userName") String userName, @Query("psw") String psw);
 }

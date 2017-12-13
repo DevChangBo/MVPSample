@@ -6,19 +6,22 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.utils.DialogUtils;
 
+import alan.mvptoolssample.R;
 import alan.mvptoolssample.di.component.DaggerF_1Component;
 import alan.mvptoolssample.di.module.F_1Module;
 import alan.mvptoolssample.mvp.contract.F_1Contract;
 import alan.mvptoolssample.mvp.presenter.F_1Presenter;
-
-import com.jess.arms.utils.DialogUtils;
-
-import alan.mvptoolssample.R;
+import butterknife.BindView;
+import butterknife.OnClick;
 import timber.log.Timber;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
@@ -33,6 +36,15 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  */
 public class F_1Fragment extends BaseFragment<F_1Presenter> implements F_1Contract.View {
 
+
+    @BindView(R.id.tv_1)
+    TextView mTv1;
+    @BindView(R.id.et_1)
+    EditText mEt1;
+    @BindView(R.id.et_2)
+    EditText mEt2;
+    @BindView(R.id.bt)
+    Button mBt;
 
     public static F_1Fragment newInstance() {
         F_1Fragment fragment = new F_1Fragment();
@@ -119,4 +131,19 @@ public class F_1Fragment extends BaseFragment<F_1Presenter> implements F_1Contra
 
     }
 
+
+    @OnClick(R.id.bt)
+    public void onClick() {
+        mPresenter.dologin();
+    }
+
+    @Override
+    public String getUn() {
+        return mEt1.getText().toString();
+    }
+
+    @Override
+    public String getpsw() {
+        return mEt2.getText().toString();
+    }
 }

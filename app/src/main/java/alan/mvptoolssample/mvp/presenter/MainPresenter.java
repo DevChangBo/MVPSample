@@ -55,7 +55,7 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
         mPagerAdapter = new MyPagerAdapter(mRootView.getFragmentManager_(), mModel.getFragments(), mModel.getTitles());
         mRootView.setAdapter(mPagerAdapter);
         tl_2();
-        mRootView.showDialog("提示", "初始化完成", SweetAlertDialog.SUCCESS_TYPE);
+//        mRootView.showDialog("提示", "初始化完成", SweetAlertDialog.SUCCESS_TYPE);
     }
 
     public DialogInterface.OnCancelListener getCancleListener() {

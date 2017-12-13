@@ -1,6 +1,7 @@
 package alan.mvptoolssample.mvp.model;
 
 import android.app.Application;
+import android.database.Observable;
 
 import com.google.gson.Gson;
 import com.jess.arms.integration.IRepositoryManager;
@@ -8,9 +9,14 @@ import com.jess.arms.mvp.BaseModel;
 
 import com.jess.arms.di.scope.ActivityScope;
 
+import org.greenrobot.greendao.DbUtils;
+
 import javax.inject.Inject;
 
 import alan.mvptoolssample.mvp.contract.F_1Contract;
+import alan.mvptoolssample.mvp.model.api.service.UserService;
+import alan.mvptoolssample.mvp.model.en.en.BaseJson;
+import alan.mvptoolssample.mvp.model.en.en.LoginBean;
 
 /**
  * ================================================================
@@ -39,4 +45,13 @@ public class F_1Model extends BaseModel implements F_1Contract.Model {
         this.mApplication = null;
     }
 
+    @Override
+    public io.reactivex.Observable<BaseJson<LoginBean>> doLogin(String userName, String psw) {
+        return mRepositoryManager.obtainRetrofitService(UserService.class).doLogin(userName, psw);
+    }
+
+    @Override
+    public void insertUserId(String mId) {
+//        DbUtils.inser(mId);
+    }
 }
