@@ -17,6 +17,7 @@ import alan.mvptoolssample.mvp.contract.F_4Contract;
 import alan.mvptoolssample.mvp.presenter.F_4Presenter;
 
 import com.jess.arms.utils.DialogUtils;
+import com.jess.arms.widget.dialog.SweetAlertDialog;
 
 import alan.mvptoolssample.R;
 import timber.log.Timber;
@@ -57,6 +58,7 @@ public class F_4Fragment extends BaseFragment<F_4Presenter> implements F_4Contra
     @Override
     public void initData(Bundle savedInstanceState) {
         Timber.d("更多……");
+        showDialog("测试","123", SweetAlertDialog.ERROR_TYPE);
     }
 
     /**
@@ -80,6 +82,19 @@ public class F_4Fragment extends BaseFragment<F_4Presenter> implements F_4Contra
     @Override
     public void showLoading() {
         loadingDialog = DialogUtils.getInstance().getLoadingDialog(getActivity(), mPresenter.getCancleListener());
+    }
+
+    /**
+     * 显示对话框
+     *
+     * @param title      标题
+     * @param content    内容
+     * @param dialogType 对话框类型 成功？失败 SweetAlertDialog.ERROR_TYPE...
+     */
+    @Override
+    public void showDialog(String title, String content, int dialogType) {
+        mDialog = DialogUtils.getInstance().getDialog(getActivity(), title, content, dialogType, false, sweetAlertDialog -> mDialog.dismiss());
+        mDialog.show();
     }
 
     @Override

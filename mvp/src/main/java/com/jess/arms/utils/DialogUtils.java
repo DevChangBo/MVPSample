@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 
 import com.jess.arms.R;
+import com.jess.arms.widget.dialog.SweetAlertDialog;
 import com.jess.arms.widget.loading.ACProgressConstant;
 import com.jess.arms.widget.loading.ACProgressFlower;
 
@@ -37,5 +38,27 @@ public class DialogUtils {
         if (mCancelListener != null) dialog.setOnCancelListener(mCancelListener);
         dialog.show();
         return dialog;
+    }
+
+
+    /**
+     * 获取一个对话框
+     *
+     * @param mActivity              上下午
+     * @param title                 标题
+     * @param content               内容
+     * @param dialogType            对话框类型  SweetAlertDialog.ERROR_TYPE...
+     * @param isCancelable          对话框是否可以取消
+     * @param mOnSweetClickListener 确定按钮点击事件
+     * @return
+     */
+    public SweetAlertDialog getDialog(Activity mActivity, String title, String content, int dialogType, boolean isCancelable, SweetAlertDialog.OnSweetClickListener mOnSweetClickListener) {
+        SweetAlertDialog mDialog = new SweetAlertDialog(mActivity, dialogType)
+                .setTitleText(title)
+                .setContentText(content)
+                .setConfirmClickListener(mOnSweetClickListener);
+        mDialog.setCancelable(isCancelable);
+        mDialog.setConfirmText("确定");
+        return mDialog;
     }
 }

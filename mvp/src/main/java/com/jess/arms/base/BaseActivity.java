@@ -31,6 +31,7 @@ import android.view.WindowManager;
 import com.jess.arms.base.delegate.IActivity;
 import com.jess.arms.integration.lifecycle.ActivityLifecycleable;
 import com.jess.arms.mvp.IPresenter;
+import com.jess.arms.widget.dialog.SweetAlertDialog;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import javax.inject.Inject;
@@ -58,7 +59,8 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     private final BehaviorSubject<ActivityEvent> mLifecycleSubject = BehaviorSubject.create();
     @Inject
     protected P mPresenter;
-    public Dialog loadingDialog;
+    public Dialog loadingDialog;//进度条
+    public SweetAlertDialog mDialog;//对话框
 
     @NonNull
     @Override

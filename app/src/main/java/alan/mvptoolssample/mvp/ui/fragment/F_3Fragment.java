@@ -48,7 +48,20 @@ public class F_3Fragment extends BaseFragment<F_3Presenter> implements F_3Contra
                 .build()
                 .inject(this);
     }
-
+    /**
+     * 显示对话框
+     *
+     * @param title      标题
+     * @param content    内容
+     * @param dialogType 对话框类型 成功？失败 SweetAlertDialog.ERROR_TYPE...
+     */
+    @Override
+    public void showDialog(String title, String content, int dialogType) {
+        mDialog = DialogUtils.getInstance().getDialog(getActivity(), title, content, dialogType, false, sweetAlertDialog -> {
+            Timber.d("对话框被取消");
+        });
+        mDialog.show();
+    }
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_f_3, container, false);

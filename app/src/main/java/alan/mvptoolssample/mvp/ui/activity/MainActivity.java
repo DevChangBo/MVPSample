@@ -19,6 +19,7 @@ import alan.mvptoolssample.mvp.contract.MainContract;
 import alan.mvptoolssample.mvp.presenter.MainPresenter;
 import alan.mvptoolssample.mvp.ui.adapter.MyPagerAdapter;
 import butterknife.BindView;
+import timber.log.Timber;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
@@ -88,6 +89,18 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         finish();
     }
 
+    /**
+     * 显示对话框
+     *
+     * @param title      标题
+     * @param content    内容
+     * @param dialogType 对话框类型 成功？失败 SweetAlertDialog.ERROR_TYPE...
+     */
+    @Override
+    public void showDialog(String title, String content, int dialogType) {
+        mDialog = DialogUtils.getInstance().getDialog(this, title, content, dialogType, false, sweetAlertDialog -> mDialog.dismiss());
+        mDialog.show();
+    }
 
     @Override
     public FragmentManager getFragmentManager_() {

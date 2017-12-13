@@ -82,6 +82,18 @@ public class F_2Fragment extends BaseFragment<F_2Presenter> implements F_2Contra
         loadingDialog = DialogUtils.getInstance().getLoadingDialog(getActivity(), mPresenter.getCancleListener());
     }
 
+    /**
+     * 显示对话框
+     *
+     * @param title      标题
+     * @param content    内容
+     * @param dialogType 对话框类型 成功？失败 SweetAlertDialog.ERROR_TYPE...
+     */
+    @Override
+    public void showDialog(String title, String content, int dialogType) {
+
+    }
+
     @Override
     public void hideLoading() {
         if (loadingDialog != null && loadingDialog.isShowing()) {

@@ -36,6 +36,15 @@ public interface IView {
     void showLoading();
 
     /**
+     * 显示对话框
+     *
+     * @param title      标题
+     * @param content    内容
+     * @param dialogType 对话框类型 成功？失败 SweetAlertDialog.ERROR_TYPE...
+     */
+    void showDialog(String title, String content, int dialogType);
+
+    /**
      * 隐藏加载
      */
     void hideLoading();

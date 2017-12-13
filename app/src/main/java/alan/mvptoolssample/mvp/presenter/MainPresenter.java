@@ -10,6 +10,7 @@ import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.http.imageloader.ImageLoader;
+import com.jess.arms.widget.dialog.SweetAlertDialog;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -37,6 +38,7 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
     private ImageLoader mImageLoader;
     private AppManager mAppManager;
     private MyPagerAdapter mPagerAdapter;
+
     @Inject
     public MainPresenter(MainContract.Model model, MainContract.View rootView
             , RxErrorHandler handler, Application application
@@ -49,11 +51,13 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
     }
 
 
-    public void initData(){
+    public void initData() {
         mPagerAdapter = new MyPagerAdapter(mRootView.getFragmentManager_(), mModel.getFragments(), mModel.getTitles());
         mRootView.setAdapter(mPagerAdapter);
         tl_2();
+        mRootView.showDialog("提示", "初始化完成", SweetAlertDialog.SUCCESS_TYPE);
     }
+
     public DialogInterface.OnCancelListener getCancleListener() {
         return this;
     }
@@ -102,6 +106,7 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
 
         mRootView.getViewPager().setCurrentItem(0);
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
