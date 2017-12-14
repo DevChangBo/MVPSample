@@ -28,6 +28,7 @@ import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
 import alan.mvptoolssample.MVPSampleConfig;
+import alan.mvptoolssample.app.greendao.DaoMaster;
 import butterknife.ButterKnife;
 import timber.log.Timber;
 
@@ -74,8 +75,8 @@ public class AppLifecyclesImpl implements AppLifecycles {
                 //   break;
             }
         });
-//        /*数据库初始化*/
-//        initDB(application);
+        /*数据库初始化*/
+        initDB(application);
 //
 //        /*初始化友盟SDK*/
 //        initUMengSDK(application);
@@ -230,11 +231,11 @@ public class AppLifecyclesImpl implements AppLifecycles {
         }
     }
 
-//    private void initDB(Application application) {
-//        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(application.getApplicationContext(), ZFConfig.DBNAME);
-//
-//        /*将数据库操作对象写入全局，得到app实例后可使用数据库名称获取对应自定义参数*/
-//        ArmsUtils.obtainAppComponentFromContext(application.getApplicationContext()).extras().put(ZFConfig.DBNAME, new DaoMaster(openHelper.getWritableDb()).newSession());
-//    }
+    private void initDB(Application application) {
+        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(application.getApplicationContext(), MVPSampleConfig.DBNAME);
+
+        /*将数据库操作对象写入全局，得到app实例后可使用数据库名称获取对应自定义参数*/
+        ArmsUtils.obtainAppComponentFromContext(application.getApplicationContext()).extras().put(MVPSampleConfig.DBNAME, new DaoMaster(openHelper.getWritableDb()).newSession());
+    }
 
 }

@@ -15,10 +15,14 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.DialogUtils;
 
+import java.util.List;
+
 import alan.mvptoolssample.R;
+import alan.mvptoolssample.app.utils.DBUtils;
 import alan.mvptoolssample.di.component.DaggerF_1Component;
 import alan.mvptoolssample.di.module.F_1Module;
 import alan.mvptoolssample.mvp.contract.F_1Contract;
+import alan.mvptoolssample.mvp.model.dbbean.User;
 import alan.mvptoolssample.mvp.presenter.F_1Presenter;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -67,6 +71,20 @@ public class F_1Fragment extends BaseFragment<F_1Presenter> implements F_1Contra
     @Override
     public void initData(Bundle savedInstanceState) {
         Timber.d("首页……");
+        User mUser
+                = new User();
+        mUser.setUserName("首页");
+        User mUser2
+                = new User();
+        mUser2.setUserName("首页2");
+        DBUtils.getInstance(getContext()).insertUser(mUser);
+        DBUtils.getInstance(getContext()).insertUser(mUser2);
+
+
+        List<User> users = DBUtils.getInstance(getContext()).getUsers();
+        for (int i = 0; i < users.size(); i++) {
+            Timber.d("User:" + users.get(i).toString());
+        }
     }
 
     /**
