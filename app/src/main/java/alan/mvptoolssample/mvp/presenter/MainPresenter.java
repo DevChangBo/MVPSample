@@ -1,5 +1,6 @@
 package alan.mvptoolssample.mvp.presenter;
 
+import android.Manifest;
 import android.app.Application;
 import android.content.DialogInterface;
 import android.support.v4.view.ViewPager;
@@ -10,6 +11,8 @@ import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.http.imageloader.ImageLoader;
+import com.jess.arms.utils.DialogUtils;
+import com.jess.arms.utils.PermissionUtil;
 import com.jess.arms.widget.dialog.SweetAlertDialog;
 
 import java.util.ArrayList;
@@ -55,6 +58,7 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
         mPagerAdapter = new MyPagerAdapter(mRootView.getFragmentManager_(), mModel.getFragments(), mModel.getTitles());
         mRootView.setAdapter(mPagerAdapter);
         tl_2();
+        getPermission();
 //        mRootView.showDialog("提示", "初始化完成", SweetAlertDialog.SUCCESS_TYPE);
     }
 
@@ -105,6 +109,20 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
         });
 
         mRootView.getViewPager().setCurrentItem(0);
+    }
+
+    private void getPermission() {
+        PermissionUtil.requestPermission(new PermissionUtil.RequestPermission() {
+            @Override
+            public void onRequestPermissionSuccess() {
+                mRootView.showDialog("提示", "权限获取成功", SweetAlertDialog.SUCCESS_TYPE);
+            }
+
+            @Override
+            public void onRequestPermissionFailure() {
+                mRootView.showDialog("提示", "权限获取失败", SweetAlertDialog.ERROR_TYPE);
+            }
+        }, mRootView.getRxPermission(), mErrorHandler, Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     @Override

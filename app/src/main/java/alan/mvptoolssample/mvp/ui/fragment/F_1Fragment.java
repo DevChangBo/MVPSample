@@ -37,8 +37,6 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 public class F_1Fragment extends BaseFragment<F_1Presenter> implements F_1Contract.View {
 
 
-    @BindView(R.id.tv_1)
-    TextView mTv1;
     @BindView(R.id.et_1)
     EditText mEt1;
     @BindView(R.id.et_2)

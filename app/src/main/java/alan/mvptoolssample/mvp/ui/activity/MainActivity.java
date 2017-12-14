@@ -11,6 +11,7 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.DialogUtils;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import alan.mvptoolssample.R;
 import alan.mvptoolssample.di.component.DaggerMainComponent;
@@ -38,9 +39,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     ViewPager mVpMain;
     @BindView(R.id.ctl)
     CommonTabLayout mCtl;
-
+    private RxPermissions mRxPermissions;
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
+        mRxPermissions = new RxPermissions(this);
         DaggerMainComponent //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
@@ -120,5 +122,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     public ViewPager getViewPager() {
         return mVpMain;
+    }
+
+    @Override
+    public RxPermissions getRxPermission() {
+        return mRxPermissions;
     }
 }
