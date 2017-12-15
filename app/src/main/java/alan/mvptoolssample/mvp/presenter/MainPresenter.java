@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.jess.arms.http.imageloader.ImageConfig;
+import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
@@ -55,6 +57,11 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
 
 
     public void initData() {
+        mImageLoader.loadImage(mApplication, ImageConfigImpl
+                .builder()
+                .url(mModel.getUserLogoUrl())
+                .imageView(mRootView.getCiv())
+                .build());
         mPagerAdapter = new MyPagerAdapter(mRootView.getFragmentManager_(), mModel.getFragments(), mModel.getTitles());
         mRootView.setAdapter(mPagerAdapter);
         tl_2();

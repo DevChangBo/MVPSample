@@ -57,14 +57,22 @@
                 android:layout_marginRight="40px"
                 android:visibility="gone"/>
 
+            <com.jess.arms.widget.CircleImageView
+                android:id="@+id/civ"
+                android:layout_width="90px"
+                android:layout_height="90px"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="40px"
+                android:visibility="gone"/>
+
             <TextView
                 android:id="@+id/toolbar_next_text"
-                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="40px"
-                android:text="巡逻轨迹"/>
+                android:text="巡逻轨迹"
+                android:visibility="gone"/>
         </com.zhy.autolayout.AutoRelativeLayout>
 
 

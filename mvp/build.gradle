@@ -137,7 +137,7 @@ dependencies {
 
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = "1.0.1"
+version = "1.0.2"
 
 //upload infos.
 def siteUrl = 'https://github.com/devzwy/MultiMediaDemo'

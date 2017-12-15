@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.http.imageloader.glide.GlideArms;
 import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.DialogUtils;
+import com.jess.arms.widget.CircleImageView;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import alan.mvptoolssample.R;
@@ -20,7 +23,7 @@ import alan.mvptoolssample.mvp.contract.MainContract;
 import alan.mvptoolssample.mvp.presenter.MainPresenter;
 import alan.mvptoolssample.mvp.ui.adapter.MyPagerAdapter;
 import butterknife.BindView;
-import timber.log.Timber;
+import butterknife.OnClick;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
@@ -39,7 +42,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     ViewPager mVpMain;
     @BindView(R.id.ctl)
     CommonTabLayout mCtl;
+    @BindView(R.id.civ)
+    CircleImageView mCiv;
     private RxPermissions mRxPermissions;
+
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
         mRxPermissions = new RxPermissions(this);
@@ -59,6 +65,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     public void initData(Bundle savedInstanceState) {
         mPresenter.initData();
+        mCiv.setVisibility(View.VISIBLE);
     }
 
 
@@ -127,5 +134,15 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     public RxPermissions getRxPermission() {
         return mRxPermissions;
+    }
+
+    @Override
+    public CircleImageView getCiv() {
+        return mCiv;
+    }
+
+    @OnClick(R.id.civ)
+    public void onClick() {
+        showMessage("你想对我干什么");
     }
 }

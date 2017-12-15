@@ -3,11 +3,13 @@ package alan.mvptoolssample.mvp.contract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.widget.ImageView;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.jess.arms.mvp.IView;
 import com.jess.arms.mvp.IModel;
+import com.jess.arms.widget.CircleImageView;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
@@ -36,6 +38,8 @@ public interface MainContract {
         ViewPager getViewPager();
 
         RxPermissions getRxPermission();
+
+        CircleImageView getCiv();
     }
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
@@ -46,5 +50,7 @@ public interface MainContract {
         String[] getTitles();
 
         ArrayList<CustomTabEntity>  getTibles();
+
+        String getUserLogoUrl();
     }
 }

@@ -75,4 +75,9 @@ public class MainModel extends BaseModel implements MainContract.Model {
         mTabEntities.add(new TabEntity("更多", R.mipmap.tab_more_select,R.mipmap.tab_more_unselect));
         return mTabEntities;
     }
+
+    @Override
+    public String getUserLogoUrl() {
+        return "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1513340602302&di=fd8241fb2846a0b7aeeb3cafd565086b&imgtype=0&src=http%3A%2F%2Fimg06.tooopen.com%2Fimages%2F20161124%2Ftooopen_sy_187698631895.jpg";
+    }
 }
