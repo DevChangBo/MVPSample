@@ -10,15 +10,15 @@ import android.view.ViewGroup;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.utils.DialogUtils;
 
+import alan.mvptoolssample.R;
 import alan.mvptoolssample.di.component.DaggerF_2Component;
 import alan.mvptoolssample.di.module.F_2Module;
 import alan.mvptoolssample.mvp.contract.F_2Contract;
 import alan.mvptoolssample.mvp.presenter.F_2Presenter;
-
-import com.jess.arms.utils.DialogUtils;
-
-import alan.mvptoolssample.R;
+import alan.mvptoolssample.mvp.ui.activity.BannerActivity;
+import butterknife.OnClick;
 import timber.log.Timber;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
@@ -119,4 +119,34 @@ public class F_2Fragment extends BaseFragment<F_2Presenter> implements F_2Contra
 
     }
 
+    @OnClick({R.id.bt_1, R.id.bt_2, R.id.bt_3, R.id.bt_4, R.id.bt_5, R.id.bt_6, R.id.bt_7, R.id.bt_8})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.bt_1:
+                Timber.d("轮播图演示");
+                launchActivity(new Intent(getActivity(), BannerActivity.class));
+                break;
+            case R.id.bt_2:
+                Timber.d("预留功能2");
+                break;
+            case R.id.bt_3:
+                Timber.d("预留功能3");
+                break;
+            case R.id.bt_4:
+                Timber.d("预留功能4");
+                break;
+            case R.id.bt_5:
+                Timber.d("预留功能5");
+                break;
+            case R.id.bt_6:
+                Timber.d("预留功能6");
+                break;
+            case R.id.bt_7:
+                Timber.d("预留功能7");
+                break;
+            case R.id.bt_8:
+                Timber.d("预留功能8");
+                break;
+        }
+    }
 }

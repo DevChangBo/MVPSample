@@ -134,6 +134,6 @@ dependencies {
         exclude group: 'com.android.support'
     })
     compile 'de.hdodenhof:circleimageview:2.2.0'
-    compile 'com.zwy:mvp:1.0.2'
-//    compile project(':mvp')
+//    compile 'com.zwy:mvp:1.0.2'
+    compile project(':mvp')
 }

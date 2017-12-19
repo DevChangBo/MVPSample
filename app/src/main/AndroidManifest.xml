@@ -3,13 +3,14 @@
           package="alan.mvptoolssample">
 
     <application
+        android:name="com.jess.arms.base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name="com.jess.arms.base.BaseApplication"
         android:theme="@style/AppTheme">
+
         <!-- 屏幕适配配置参数(当前编译的手机分辨率) -->
         <meta-data
             android:name="design_width"
@@ -20,14 +21,18 @@
         <meta-data
             android:name="alan.mvptoolssample.app.GlobalConfiguration"
             android:value="ConfigModule"/>
-        <activity android:name=".mvp.ui.activity.MainActivity"
-                  android:label="首页">
+
+        <activity
+            android:name=".mvp.ui.activity.MainActivity"
+            android:label="首页">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".mvp.ui.activity.BannerActivity"
+            android:label="看我七十二变"/>
     </application>
 
 </manifest>
